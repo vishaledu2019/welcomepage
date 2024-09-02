@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Animation</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        #welcome {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #welcome h1 {
+            color: #fff;
+            font-size: 4em;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 1s ease-in-out;
+        }
+        #welcome.animate h1 {
+            opacity: 1;
+            transform: scale(1);
+        }
+        #welcome.fade-out {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        #home {
+            display: none;
+            padding: 20px;
+            text-align: center;
+            height: 100vh;
+            width: 100vw;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="welcome">
+        <h1>Welcome to Eduprajna</h1>
+    </div>
+    <div id="home">
+        <div class="container">
+            <h1>Home Page</h1>
+        <p>This is the main content of Eduprajna website.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const welcome = document.getElementById('welcome');
+            const home = document.getElementById('home');
+
+            // Start animation
+            setTimeout(() => {
+                welcome.classList.add('animate');
+            }, 100);
+
+            // Fade out welcome screen after 9 seconds
+            setTimeout(() => {
+                welcome.classList.add('fade-out');
+            }, 4500);
+
+            // Show home page after 10 seconds
+            setTimeout(() => {
+                welcome.style.display = 'none';
+                home.style.display = 'flex';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
